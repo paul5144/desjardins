@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Importation de SweetAlert -->
+    <title>Desjardins</title>
+	<link rel="shortcut icon" href="image/logo.png">    <style>
+        #sidebar.hide {
+            width: 60px;
+        }
+
+        #sidebar.hide .text {
+            display: none;
+        }
+
+        .transfer-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .transfer-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .transfer-form label {
+            font-weight: bold;
+        }
+        .transfer-form input, .transfer-form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .transfer-form button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .transfer-form button:hover {
+            background: #0056b3;
+        }
+    </style>
+       <script>
+        // Vérifie si l'utilisateur est connecté
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "index.html"; // Redirige vers la page de connexion
+        }
+    </script>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bx-bank'></i>
+			<span class="text" style="color: green;">Desjardins</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="dashboard.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Tableau de bord</span>
+                </a>
+            </li>
+            <li>
+                <a href="comptes.html">
+                    <i class='bx bx-wallet'></i>
+                    <span class="text">Mes Comptes</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="virements.html">
+                    <i class='bx bx-transfer'></i>
+                    <span class="text">Virements</span>
+                </a>
+            </li>
+            <li>
+                <a href="factures.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="text">Factures & Abonnements</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="parametre.html">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Paramètres</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Déconnexion</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- CONTENT -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+        </nav>
+
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Virements</h1>
+                </div>
+            </div>
+
+            <div class="transfer-form">
+                <h2>Effectuer un virement</h2>
+                <form id="transferForm">
+                    <label for="account">Compte source</label>
+                    <select id="account" required>
+                        <option value="courant">Compte Courant - 1 164 842,95€</option>
+                        <option value="epargne">Compte Épargne - 1 200,000€</option>
+                    </select>
+                    <label for="recipient">Bénéficiaire</label>
+                    <input type="text" id="recipient" placeholder="Nom du bénéficiaire" required>
+                    <label for="iban">IBAN</label>
+                    <input type="text" id="iban" placeholder="FR76 3000 6000 0112 3456 7890 189" required>
+                    <label for="amount">Montant (€)</label>
+                    <input type="number" id="amount" placeholder="Montant" required>
+                    <button type="submit">Valider le virement</button>
+                </form>
+            </div>
+        </main>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Menu sidebar
+            const menuBar = document.querySelector('#content nav .bx.bx-menu');
+            const sidebar = document.getElementById('sidebar');
+
+            if (menuBar && sidebar) {
+                menuBar.addEventListener('click', function () {
+                    sidebar.classList.toggle('hide');
+                });
+            }
+
+            // Empêcher le virement et afficher l'alerte
+            document.getElementById("transferForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Empêche l'envoi du formulaire
+
+                // Afficher une alerte avec SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Compte Bloqué',
+                    text: 'Votre compte est momentanément bloqué, vous ne pouvez pas effectuer de virement.',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#007bff'
+                });
+            });
+        });
+        // Déconnexion
+    document.querySelector('.logout').addEventListener('click', function() {
+        localStorage.removeItem("isLoggedIn"); // Supprime l'élément "isLoggedIn" du localStorage
+        window.location.href = "index.html"; // Redirige vers la page de connexion
+    });
+    </script>
+
+</body>
+</html>

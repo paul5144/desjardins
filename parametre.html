@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+    <title>Desjardins</title>
+	<link rel="shortcut icon" href="image/logo.png">	<style>
+		.settings-container {
+			width: 100%;
+			max-width: 600px;
+			margin: auto;
+			padding: 20px;
+			background: white;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
+		.profile-img {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 15px;
+			border: 3px solid #007bff;
+		}
+		.settings-container h3 {
+			margin-bottom: 10px;
+			color: #333;
+		}
+		.info {
+			margin: 10px 0;
+			font-size: 16px;
+			font-weight: bold;
+			color: #555;
+		}
+		.settings-container label {
+			display: block;
+			margin: 10px 0 5px;
+			font-weight: bold;
+		}
+		.settings-container input {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.settings-container .btn {
+			margin-top: 15px;
+			padding: 10px;
+			width: 100%;
+			background: #007bff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.settings-container .btn:hover {
+			background: #0056b3;
+		}
+		.toggle-switch {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 10px;
+		}
+	</style>
+       <script>
+        // Vérifie si l'utilisateur est connecté
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "index.html"; // Redirige vers la page de connexion
+        }
+    </script>
+</head>
+<body>
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bx-bank'></i>
+			<span class="text" style="color: green;">Desjardins</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="dashboard.html">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Tableau de bord</span>
+				</a>
+			</li>
+			<li>
+				<a href="comptes.html">
+					<i class='bx bx-wallet'></i>
+					<span class="text">Mes Comptes</span>
+				</a>
+			</li>
+			<li>
+				<a href="virements.html">
+					<i class='bx bx-transfer'></i>
+					<span class="text">Virements</span>
+				</a>
+			</li>
+			<li>
+				<a href="factures.html">
+					<i class='bx bx-receipt'></i>
+					<span class="text">Factures & Abonnements</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li class="active">
+				<a href="parametre.html">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Paramètres</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Déconnexion</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+
+	<!-- CONTENT -->
+	<section id="content">
+		<nav>
+			<i class='bx bx-menu'></i>
+		</nav>
+
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Paramètres</h1>
+				</div>
+			</div>
+
+			<div class="settings-container">
+				<h3>Informations Personnelles</h3>
+				<img src="img/WhatsApp Image 2025-03-30 at 13.55.19.jpeg" alt="Photo de profil" class="profile-img">
+				<p class="info"><strong>Nom :</strong> Guiseppe Karl </p>
+				<p class="info"><strong>Email :</strong> bassaty650@gmail.com</p>
+				<p class="info"><strong>Téléphone :</strong> +44 75 8679 1415</p>
+			</div>
+
+			
+	</section>
+
+	<script>
+	
+        // Déconnexion
+    document.querySelector('.logout').addEventListener('click', function() {
+        localStorage.removeItem("isLoggedIn"); // Supprime l'élément "isLoggedIn" du localStorage
+        window.location.href = "index.html"; // Redirige vers la page de connexion
+    });
+	</script>
+
+</body>
+</html>

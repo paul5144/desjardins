@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+    <title>Desjardins</title>
+	<link rel="shortcut icon" href="image/logo.png">	<style>
+		/* Style de base */
+		.table-data {
+			width: 100%;
+			margin-top: 20px;
+			border-collapse: collapse;
+		}
+		.table-data th, .table-data td {
+			padding: 12px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+		.status {
+			padding: 4px 8px;
+			border-radius: 4px;
+			font-weight: bold;
+		}
+		.completed {
+			background-color: #4CAF50;
+			color: white;
+		}
+		.pending {
+			background-color: #FFC107;
+			color: white;
+		}
+		.overdue {
+			background-color: #F44336;
+			color: white;
+		}
+		.btn {
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: #0056b3;
+		}
+        #sidebar.hide {
+		width: 60px; /* Réduit la taille */
+	}
+	
+	#sidebar.hide .text {
+		display: none; /* Cache les textes */
+	}
+	</style>
+       <script>
+        // Vérifie si l'utilisateur est connecté
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "index.html"; // Redirige vers la page de connexion
+        }
+    </script>
+</head>
+<body>
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bx-bank'></i>
+			<span class="text" style="color: green;">Desjardins</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="dashboard.html">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Tableau de bord</span>
+				</a>
+			</li>
+			<li>
+				<a href="comptes.html">
+					<i class='bx bx-wallet'></i>
+					<span class="text">Mes Comptes</span>
+				</a>
+			</li>
+			<li>
+				<a href="virements.html">
+					<i class='bx bx-transfer'></i>
+					<span class="text">Virements</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="factures.html">
+					<i class='bx bx-receipt'></i>
+					<span class="text">Factures & Abonnements</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="parametre.html">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Paramètres</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Déconnexion</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+
+	<!-- CONTENT -->
+	<section id="content">
+		<nav>
+			<i class='bx bx-menu'></i>
+			
+		</nav>
+		
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Factures & Abonnements</h1>
+				</div>
+			</div>
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Historique des Factures</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Facture</th>
+								<th>Date</th>
+								<th>Montant</th>
+								<th>Statut</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Netflix</td>
+								<td>28-03-2025</td>
+								<td>12,99€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Orange</td>
+								<td>27-03-2025</td>
+								<td>29,99€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Canal+</td>
+								<td>26-03-2025</td>
+								<td>25,00€</td>
+								<td><span class="status overdue">En retard</span></td>
+						
+							</tr>
+							<tr>
+								<td>Spotify</td>
+								<td>25-03-2025</td>
+								<td>9,99€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Amazon Prime</td>
+								<td>24-03-2025</td>
+								<td>5,99€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Disney+</td>
+								<td>23-03-2025</td>
+								<td>6,99€</td>
+								<td><span class="status overdue">En retard</span></td>
+						
+							</tr>
+							<tr>
+								<td>VivaTicket</td>
+								<td>22-03-2025</td>
+								<td>15,00€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Box Internet</td>
+								<td>21-03-2025</td>
+								<td>49,99€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Electricité</td>
+								<td>20-03-2025</td>
+								<td>55,00€</td>
+								<td><span class="status overdue">En retard</span></td>
+						
+							</tr>
+							<tr>
+								<td>Eau</td>
+								<td>19-03-2025</td>
+								<td>35,00€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Mobile</td>
+								<td>18-03-2025</td>
+								<td>19,99€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Vélib</td>
+								<td>17-03-2025</td>
+								<td>3,00€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Uber</td>
+								<td>16-03-2025</td>
+								<td>20,00€</td>
+								<td><span class="status overdue">En retard</span></td>
+						
+							</tr>
+							<tr>
+								<td>Netflix</td>
+								<td>15-03-2025</td>
+								<td>12,99€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>EDF</td>
+								<td>14-03-2025</td>
+								<td>48,00€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Orange</td>
+								<td>13-03-2025</td>
+								<td>29,99€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Spotify</td>
+								<td>12-03-2025</td>
+								<td>9,99€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Canal+</td>
+								<td>11-03-2025</td>
+								<td>25,00€</td>
+								<td><span class="status overdue">En retard</span></td>
+						
+							</tr>
+							<tr>
+								<td>Amazon Prime</td>
+								<td>10-03-2025</td>
+								<td>5,99€</td>
+								<td><span class="status completed">Payé</span></td>
+								
+							</tr>
+							<tr>
+								<td>Disney+</td>
+								<td>09-03-2025</td>
+								<td>6,99€</td>
+								<td><span class="status pending">En attente</span></td>
+						
+							</tr>
+							<tr>
+								<td>Box Internet</td>
+								<td>08-03-2025</td>
+								<td>49,99€</td>
+								<td><span class="status overdue">En retard</span></td>
+						
+                                
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</section>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+    const menuBar = document.querySelector('#content nav .bx.bx-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    if (menuBar && sidebar) {
+        menuBar.addEventListener('click', function () {
+            console.log("Menu cliqué !");
+            sidebar.classList.toggle('hide');
+        });
+    } else {
+        console.error("Élément non trouvé : Vérifie que le menu et la sidebar existent.");
+    }
+});
+// Déconnexion
+document.querySelector('.logout').addEventListener('click', function() {
+        localStorage.removeItem("isLoggedIn"); // Supprime l'élément "isLoggedIn" du localStorage
+        window.location.href = "index.html"; // Redirige vers la page de connexion
+    });
+	</script>
+</body>
+</html>
