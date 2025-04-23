@@ -150,6 +150,19 @@
 	</section>
 
 	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+    const menuBar = document.querySelector('#content nav .bx.bx-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    if (menuBar && sidebar) {
+        menuBar.addEventListener('click', function () {
+            console.log("Menu cliqué !");
+            sidebar.classList.toggle('hide');
+        });
+    } else {
+        console.error("Élément non trouvé : Vérifie que le menu et la sidebar existent.");
+    }
+});
 	
         // Déconnexion
     document.querySelector('.logout').addEventListener('click', function() {
